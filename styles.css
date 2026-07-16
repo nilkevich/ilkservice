@@ -54,7 +54,7 @@ svg { display: block; }
 }
 .logo { display: inline-flex; align-items: center; gap: 11px; flex: none; }
 .logo__mark {
-  width: 38px;
+  width: 44px;
   height: 38px;
   display: grid;
   place-items: center;
@@ -62,7 +62,7 @@ svg { display: block; }
   color: #fff;
   transform: skew(-7deg);
 }
-.logo__mark svg { width: 30px; fill: currentColor; transform: skew(7deg); }
+.logo__mark svg { width: 36px; fill: currentColor; transform: skew(7deg); }
 .logo__text {
   color: #fff;
   font: 700 25px/1 "Oswald", sans-serif;
