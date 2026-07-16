@@ -2,7 +2,7 @@ const header = document.getElementById("header");
 const menuButton = document.getElementById("menuButton");
 const nav = document.getElementById("nav");
 const requestForm = document.getElementById("requestForm");
-const formSuccess = document.getElementById("formSuccess");
+const whatsappSubmit = document.getElementById("whatsappSubmit");
 
 const updateHeader = () => {
   header.classList.toggle("scrolled", window.scrollY > 30);
@@ -27,16 +27,29 @@ nav.querySelectorAll("a").forEach((link) => {
   });
 });
 
+const getRequestText = () => {
+  const data = new FormData(requestForm);
+  return [
+    "Заявка с сайта ilkservice",
+    `Имя: ${data.get("name")}`,
+    `Телефон: ${data.get("phone")}`,
+    `Услуга: ${data.get("service")}`,
+    `Комментарий: ${data.get("message") || "не указан"}`,
+  ].join("\n");
+};
+
 requestForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const submitButton = requestForm.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  submitButton.textContent = "Отправляем…";
+  if (!requestForm.reportValidity()) return;
 
-  window.setTimeout(() => {
-    requestForm.reset();
-    formSuccess.classList.add("visible");
-    submitButton.disabled = false;
-    submitButton.textContent = "Отправить заявку";
-  }, 650);
+  const subject = encodeURIComponent("Заявка с сайта ilkservice");
+  const body = encodeURIComponent(getRequestText());
+  window.location.href = `mailto:ilira72@mail.ru?subject=${subject}&body=${body}`;
+});
+
+whatsappSubmit.addEventListener("click", () => {
+  if (!requestForm.reportValidity()) return;
+
+  const text = encodeURIComponent(getRequestText());
+  window.open(`https://wa.me/79897091909?text=${text}`, "_blank", "noopener,noreferrer");
 });

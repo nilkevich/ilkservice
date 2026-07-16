@@ -73,8 +73,9 @@ svg { display: block; }
 .nav a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); transition: color .2s; }
 .nav a:hover { color: #fff; }
 .header__contact { display: flex; align-items: center; gap: 22px; }
-.header__phone { font: 700 16px/1.2 "Manrope", sans-serif; text-align: right; }
-.header__phone small { display: block; margin-bottom: 4px; color: rgba(255,255,255,.55); font-size: 9px; font-weight: 500; }
+.header__phones { display: grid; justify-items: end; gap: 1px; }
+.header__phones a { font: 700 13px/1.25 "Manrope", sans-serif; }
+.header__phones small { margin-bottom: 2px; color: rgba(255,255,255,.55); font-size: 8px; font-weight: 500; }
 .button {
   min-height: 54px;
   display: inline-flex;
@@ -97,6 +98,8 @@ svg { display: block; }
 .button--ghost svg { width: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
 .button--light { color: var(--text); background: #fff; }
 .button--dark { color: #fff; background: var(--bg); }
+.button--whatsapp { color: #fff; background: #218b56; }
+.button--whatsapp:hover { background: #187346; }
 .menu-button { display: none; width: 42px; height: 42px; border: 0; background: none; padding: 10px; }
 .menu-button span { display: block; width: 100%; height: 2px; margin: 5px 0; background: #fff; transition: .25s; }
 
@@ -268,6 +271,7 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 .request__direct { display: grid; gap: 5px; }
 .request__direct span { color: rgba(255,255,255,.58); font-size: 10px; }
 .request__direct a { font: 600 25px/1.2 "Oswald", sans-serif; }
+.request__direct .request__email { margin-top: 5px; font: 700 13px/1.4 "Manrope", sans-serif; text-decoration: underline; text-underline-offset: 4px; }
 .request-form { display: grid; grid-template-columns: 1fr 1fr; gap: 21px 16px; padding: 40px; color: var(--text); background: #fff; box-shadow: 0 25px 70px rgba(78,25,8,.2); }
 .request-form label { display: grid; gap: 8px; }
 .request-form label > span { font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -287,17 +291,15 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 .request-form textarea { min-height: 70px; padding-top: 14px; resize: vertical; }
 .request-form__wide { grid-column: 1 / -1; }
 .request-form__footer { display: flex; align-items: center; gap: 22px; margin-top: 4px; }
-.request-form__footer p { max-width: 260px; margin: 0; color: #999b96; font-size: 8px; line-height: 1.5; }
-.form-success { display: none; align-items: center; gap: 14px; padding: 18px; color: #28663f; background: #edf8f0; }
-.form-success.visible { display: flex; }
-.form-success > span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #3e9b60; }
-.form-success strong { font-size: 12px; }
-.form-success p { margin: 3px 0 0; font-size: 9px; }
+.request-form__actions { display: flex; gap: 9px; flex: none; }
+.request-form__actions .button { padding: 0 19px; }
+.request-form__footer p { max-width: 220px; margin: 0; color: #999b96; font-size: 8px; line-height: 1.5; }
 
 .footer { padding: 60px 0 24px; color: #fff; background: #0b0d0c; }
 .footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; padding-bottom: 45px; border-bottom: 1px solid rgba(255,255,255,.1); }
 .footer__top > p { max-width: 330px; margin: 0; color: rgba(255,255,255,.4); font-size: 11px; line-height: 1.6; }
-.footer__phone { justify-self: end; font: 600 25px/1 "Oswald", sans-serif; }
+.footer__phones { display: grid; justify-self: end; gap: 7px; text-align: right; }
+.footer__phones a { font: 600 22px/1 "Oswald", sans-serif; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 30px; padding-top: 24px; color: rgba(255,255,255,.3); font-size: 9px; }
 
 @media (max-width: 1050px) {
@@ -363,9 +365,10 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
   .request-form { grid-template-columns: 1fr; padding: 27px 22px; }
   .request-form label, .request-form__wide { grid-column: auto; }
   .request-form__footer { align-items: flex-start; flex-direction: column; }
-  .request-form__footer .button { width: 100%; }
+  .request-form__actions { width: 100%; flex-direction: column; }
+  .request-form__actions .button { width: 100%; }
   .footer__top { grid-template-columns: 1fr; gap: 26px; }
-  .footer__phone { justify-self: start; }
+  .footer__phones { justify-self: start; text-align: left; }
   .footer__bottom { flex-direction: column; gap: 12px; }
 }
 
