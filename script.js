@@ -2,7 +2,6 @@ const header = document.getElementById("header");
 const menuButton = document.getElementById("menuButton");
 const nav = document.getElementById("nav");
 const requestForm = document.getElementById("requestForm");
-const whatsappSubmit = document.getElementById("whatsappSubmit");
 
 const updateHeader = () => {
   header.classList.toggle("scrolled", window.scrollY > 30);
@@ -45,11 +44,4 @@ requestForm.addEventListener("submit", (event) => {
   const subject = encodeURIComponent("Заявка с сайта ilkservice");
   const body = encodeURIComponent(getRequestText());
   window.location.href = `mailto:ilira72@mail.ru?subject=${subject}&body=${body}`;
-});
-
-whatsappSubmit.addEventListener("click", () => {
-  if (!requestForm.reportValidity()) return;
-
-  const text = encodeURIComponent(getRequestText());
-  window.open(`https://wa.me/79897091909?text=${text}`, "_blank", "noopener,noreferrer");
 });
