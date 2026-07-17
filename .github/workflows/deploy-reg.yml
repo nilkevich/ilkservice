@@ -32,7 +32,10 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: ${{ secrets.REG_PATH }}
-          security: strict
+          # REG.RU's shared-hosting FTPS endpoint does not provide a complete
+          # certificate chain to GitHub-hosted runners. The transfer remains
+          # encrypted, while certificate-chain verification is relaxed.
+          security: loose
           timeout: 120000
           log-level: standard
           exclude: |
