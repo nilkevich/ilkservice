@@ -1,0 +1,43 @@
+name: Deploy to REG.RU
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: reg-ru-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Upload site over FTPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Upload site to REG.RU
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.REG_HOST }}
+          username: ${{ secrets.REG_USER }}
+          password: ${{ secrets.REG_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: ${{ secrets.REG_PATH }}
+          security: strict
+          timeout: 120000
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            .DS_Store
