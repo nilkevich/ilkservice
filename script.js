@@ -36,10 +36,6 @@ const validatePhone = () => {
   return isComplete;
 };
 
-phoneInput.addEventListener("focus", () => {
-  if (!phoneInput.value) phoneInput.value = "+7 (";
-});
-
 phoneInput.addEventListener("input", () => {
   phoneInput.value = formatPhone(phoneInput.value);
   phoneInput.setCustomValidity("");
